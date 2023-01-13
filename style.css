@@ -1,0 +1,98 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    user-select: none;
+    color: #e4fcff;
+    font-family: 'Lato', sans-serif;
+}
+img {
+    pointer-events: none;
+}
+.app {
+    background-color: rgb(0, 42, 42);
+    width: 100%;
+    min-height: 100vh;
+}
+.appContainer {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 55px 15px;
+    box-sizing: content-box;
+}
+.appTitle {
+    text-align: center;
+    font-weight: 100;
+}
+.appForm {
+    display: flex;
+    margin: 35px 0;
+}
+.appForm >*:not(:last-child) {
+    margin-right: 10px;
+}
+.appFormInput {
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+}
+.appFormInput input {
+    height: 35px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: rgb(0, 54, 54);
+    border: none;
+    outline: none
+}
+.appFormInput input::placeholder {
+    color: #e4fcffb1;
+}
+.appFormWhy {}
+.appFormHowMuch {}
+.appFormButton {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+.appFormButton button {
+    background-color: rgb(0, 159, 106);
+    padding: 10px 15px;
+    border-radius: 5px;
+    max-height: 35px;
+    cursor: pointer;
+    transition: all .2s ease;
+    border: none;
+    outline: none;
+}
+.appFormButton button:hover {
+    background-color: rgb(0, 97, 65);
+}
+.appTotal {
+    text-align: end;
+}
+.appItems {
+}
+.appItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+}
+.appItemWhy {
+    width: 173px;
+    margin-right: 35px;
+}
+.appItemDate {
+    margin-right: 35px;
+}
+.appItemSum {}
+.appItemButtons {
+    display: flex;
+}
+.appItemEdit {
+    cursor: pointer;
+    margin-right: 10px;
+}
+.appItemRemove {
+    cursor: pointer;
+}
