@@ -1,3 +1,5 @@
+import { getAll, removeOne, createOne, editOne } from "./requests.js";
+
 const appItems = document.querySelector('#appItems');
 const totalCost = document.querySelector('#total');
 const placeInput = document.querySelector('#placeInput');
@@ -11,11 +13,7 @@ const changeDate = document.querySelector('#changeDate');
 const changeCost = document.querySelector('#changeCost');
 const changeButton = document.querySelector('#changeButton');
 
-let spendingItems = [
-  {place: 'Магазин "Пятерочка"', date: '2018-02-02', cost: 2000},
-  {place: 'Магазин "Магнит"', date: '2018-02-02', cost: 2000},
-  {place: 'Магазин "Лента"', date: '2018-02-02', cost: 1500},
-];
+let spendingItems = [];
 
 let costInputState = '';
 let placeInputState = '';
@@ -83,6 +81,7 @@ const createItem = () => {
       date: getFormatedDate(),
       cost: costInputState,
     }
+    createOne(item);
     spendingItems.push(item);
     setCostInputState('');
     setPlaceInputState('');
@@ -95,14 +94,18 @@ const changeItem = () => {
     spendingItems[changeId].place = changeWhyState;
     spendingItems[changeId].date = changeDateState;
     spendingItems[changeId].cost = changeCostState;
+    editOne(spendingItems[changeId]._id, changeWhyState, changeDateState, changeCostState);
+    console.log(changeId)
     closeModal();
     render();
   }
 }
 
 const removeItem = (e) => {
+  const domEl = e.target.parentNode.parentNode.id;
+  removeOne(spendingItems[domEl]._id);
   spendingItems = spendingItems.filter((el, index) => {
-    return index != e.target.parentNode.parentNode.id ? true : false;
+    return index != domEl ? true : false;
   })
   render();
 }
@@ -182,4 +185,9 @@ modal.addEventListener('click', closeModal);
 modalContainer.addEventListener('click', e => e.stopPropagation());
 changeButton.addEventListener('click', changeItem);
 
-render();
+const runApp = async () => {
+  spendingItems = await getAll();
+  await render();
+}
+
+runApp();
