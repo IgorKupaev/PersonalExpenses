@@ -1,6 +1,6 @@
 export const getAll = async () => {
     let result;
-    await fetch('http://localhost:8000/allExpenses')
+    await fetch('http://localhost:8000/expenses')
     .then((response) => response.json())
     .then((data) => {
       result = data;
@@ -24,7 +24,7 @@ export const createOne = async (item) => {
 
 export const removeOne = async (id) => {
   try {
-    await fetch(`http://localhost:8000/removeExpense/${id}`,{
+    await fetch(`http://localhost:8000/expense/${id}`,{
     method: "DELETE",
     headers: {
       'Content-Type': 'application/json;charset=utf-8'
@@ -38,7 +38,7 @@ export const editOne = async (id, place, date, cost) => {
   try {
     let body = JSON.stringify({id, place, date, cost});
     console.log(body)
-    await fetch('http://localhost:8000/editExpense', {
+    await fetch('http://localhost:8000/expense', {
       method: "PUT",
       headers: {
         'Content-Type': 'application/json;charset=utf-8'
