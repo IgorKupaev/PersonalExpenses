@@ -95,7 +95,6 @@ const changeItem = () => {
     spendingItems[changeId].date = changeDateState;
     spendingItems[changeId].cost = changeCostState;
     editOne(spendingItems[changeId]._id, changeWhyState, changeDateState, changeCostState);
-    console.log(changeId)
     closeModal();
     render();
   }
